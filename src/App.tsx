@@ -12,9 +12,9 @@ export default function App() {
             <Router>
                 <Switch>
                     {/*<Redirect from="/"  to="/login" exact></Redirect>*/}
-                    {/*和路由重定向Redirect的区别
-                    Route
-
+                    {/*
+                    和路由重定向Redirect的区别
+                    Route render可以在这里写路由导航守卫
                     */}
                     <Route exact path="/" render={
                         () => {
