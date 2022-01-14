@@ -5,6 +5,7 @@ import Login from "@/pages/Login"
 import PrivateRoute from "./compoment/PrivateRoute";
 import Layout from "@/pages/Layout";
 
+
 export default function App() {
     return (<div>
         <Router>
