@@ -1,6 +1,7 @@
 import {Userinfo} from "@/store/actions/login";
 import {RootThunkAction} from "@/store/actions/index";
 import {GetUserInfo} from "@/api";
+import {clearToken} from "@/utils";
 
 export type UserType = {
     type: 'user/info'
@@ -19,4 +20,14 @@ function user(): RootThunkAction {
     }
 }
 
-export {user}
+function Exit(): RootThunkAction {
+    return async (dispatch) => {
+        dispatch({
+            type: "user/info",
+            info: {} as Userinfo
+        })
+        clearToken()
+    }
+}
+
+export {user, Exit}
