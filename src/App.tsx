@@ -34,7 +34,10 @@ export default function App() {
                 {/*
                 PrivateRoute
                 */}
-                <PrivateRoute path="/home" exact>
+                {/*
+                exact 精准匹配，只要匹配到home就不显示后面的页面
+                */}
+                <PrivateRoute path="/home">
                     <Layout/>
                 </PrivateRoute>
             </Switch>
