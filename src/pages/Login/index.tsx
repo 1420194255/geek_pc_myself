@@ -1,19 +1,22 @@
-import {Button, Card, Checkbox, Form, Input} from 'antd'
+import {Button, Card, Checkbox, Form, Input, message} from 'antd'
 import logo from '../../assets/logo.png'
 import './index.scss'
-import {login} from "@/api/user"
-import {setToken} from "@/utils/index"
 import {useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {loginAction} from "@/store/actions";
 //別名 匹配类型,Form表單验证成功，返回的是字符串
 type FormDate = { remember: boolean, mobile: string, code: string }
 
 
 function Login() {
     const history = useHistory()
+    //调用store的函数loginAction
+    const dispatch = useDispatch()
     const onFinish = async (values: FormDate) => {
-        const res = await login(values.mobile, values.code)
-        setToken(res.data.token)//保存token
+        //因为loginAction函数返回的是Promise对象，属于异步代码，需要加上await等待
+        await dispatch(loginAction(values.mobile, values.code))
         history.push("/home")
+        message.success("登录成功")
     }
 
     const onFinishFailed = (errorInfo: any) => {

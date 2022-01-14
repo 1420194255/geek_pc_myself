@@ -20,7 +20,6 @@ function PrivateRoute({children, ...rest}: RouteProps) {
                 if (isAuth()) {
                     return children
                 } else {
-                    message.error("请先登录")
                     return (
                         < Redirect
                             to={

@@ -13,7 +13,6 @@ instance.interceptors.request.use(function (res) {
 })
 
 instance.interceptors.response.use(function (res) {
-    console.log(res)
     return res.data
 }, function (err) {
     message.error(err.response.data.message)
