@@ -36,6 +36,12 @@ export default function App() {
                 */}
                 {/*
                 exact 精准匹配，只要匹配到home就不显示后面的页面
+                子组件使用Route，需要精准匹配，否则会模糊匹配到home页面
+                结果：
+                path="/home"  exact
+                /home/artive
+                /home/water
+                没有设置exact
                 */}
                 <PrivateRoute path="/home">
                     <Layout/>
