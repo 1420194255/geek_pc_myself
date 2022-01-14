@@ -1,19 +1,10 @@
 import {useEffect} from "react";
-import {axios} from "@/utils"
+import {axios} from "@/utils/index"
 
 function Login() {
-    useEffect(() => {
-        async function Joke() {
-            const res = await axios({
-                url: "/joke"
-            })
-            console.log(res)
-        }
 
-        Joke()
-    }, [])
     return (
-        <div>login</div>
+        <div>layout</div>
     )
 }
 

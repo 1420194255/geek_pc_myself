@@ -1,11 +1,11 @@
 import axios from "axios"
 
 const instance = axios.create({
-    baseURL: "https://autumnfish.cn/api/"
+    baseURL: "http://geek.itheima.net/v1_0"
 })
 
 instance.interceptors.request.use(function (res) {
-    console.log(res)
+    // console.log(res)
     return res
 }, function (err) {
     return Promise.reject(err)
@@ -13,7 +13,7 @@ instance.interceptors.request.use(function (res) {
 
 instance.interceptors.response.use(function (res) {
     console.log(res)
-    return res
+    return res.data
 }, function (err) {
     return Promise.reject(err)
 })

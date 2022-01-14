@@ -1,16 +1,20 @@
-import {Card, Form, Button, Input, Checkbox} from 'antd'
+import {Button, Card, Checkbox, Form, Input} from 'antd'
 import logo from '../../assets/logo.png'
 import './index.scss'
-
-
+import {login} from "@/api/user"
+import {setToken} from "@/utils/index"
+import {useHistory} from "react-router-dom";
 //別名 匹配类型,Form表單验证成功，返回的是字符串
 type FormDate = { remember: boolean, mobile: string, code: string }
 
-const Login = () => {
-    const onFinish = (values: FormDate) => {
-        console.log('Success:', values);
-        // console.log(values.mobile)
-    };
+
+function Login() {
+    const history = useHistory()
+    const onFinish = async (values: FormDate) => {
+        const res = await login(values.mobile, values.code)
+        setToken(res.data.token)//保存token
+        history.push("/home")
+    }
 
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
