@@ -16,5 +16,27 @@
     .Menu {
       width: 100% !important;
     }
+
+    .Top {
+      //float: right;
+
+      .userinfo {
+        float: right;
+        color: white;
+
+
+
+          .Imginfo {
+            width: 37.2px !important;
+            height: 40px !important;
+            border-radius: 50%;
+          }
+
+
+        .Text_content {
+          margin: 0px 15px
+        }
+      }
+    }
   }
 }

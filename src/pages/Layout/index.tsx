@@ -3,10 +3,12 @@ import Publish from "@/pages/Publish"
 import Home from "@/pages/Home"
 import {Link, Route, useLocation} from "react-router-dom";
 import {Layout, Menu} from 'antd';
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import style from "./index.module.scss"
 import img_src from "@/assets/logo.png"
-import {DiffOutlined, EditOutlined, HomeOutlined} from '@ant-design/icons';
+import {DiffOutlined, EditOutlined, HomeOutlined, LogoutOutlined} from '@ant-design/icons';
+import {GetUserInfo} from "@/api";
+import {Userinfo} from "@/store/actions"
 
 const {SubMenu} = Menu;
 const {Header, Footer, Sider, Content} = Layout;
@@ -16,22 +18,29 @@ export default function Login() {
     //使用location，拿到路由
     const localtion = useLocation().pathname
 
-    const toggleCollapsed = () => {
-        console.log(state)
-    };
+    //用户信息
+    const [info, setinfo] = useState<Userinfo>({} as Userinfo)
+
+    useEffect(() => {
+        async function useinfo() {
+            const res = await GetUserInfo()
+            //将数据保存到redux
+            setinfo(res.data)
+        }
+
+        console.log(info)
+
+        useinfo()
+    }, [])
+
+
     return <div className={style.Layout}>
         <Layout>
             <Sider>
                 <img src={img_src} alt="显示不全" className="imgInfo"/>
                 <div style={{width: 256}} className="Menu">
-                    {/*
-                    defaultSelectedKeys={[localtion]}
-                    使用uselocation拿到当前路由，将路由作为key，
-                    效果：当前页面刷新，不会跳转到第一个页面
-                    */}
                     <Menu
                         defaultSelectedKeys={[localtion]}
-                        defaultOpenKeys={[localtion]}
                         mode="inline"
                         theme="dark"
                     >
@@ -55,7 +64,17 @@ export default function Login() {
             </Sider>
             <Layout>
 
-                <Header>顶部</Header>
+                <Header className="Top">
+                    <div className="userinfo">
+                        <span>
+                            <img className="Imginfo" src={info.photo} alt="用户图片"></img>
+                        </span>
+                        <span className="Text_content">{info.name}</span>
+                        <span>
+                            <LogoutOutlined/>退出
+                        </span>
+                    </div>
+                </Header>
                 <Content>
                     <Route path="/home" exact component={Home}></Route>
                     <Route path="/home/article" component={Article}></Route>

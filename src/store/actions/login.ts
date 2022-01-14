@@ -7,6 +7,14 @@ export type LoginType = {
     token: string
 }
 
+export type Userinfo = {
+    birthday: string
+    gender: number
+    id: string
+    mobile: string
+    name: string
+    photo: string
+}
 
 function loginAction(mobile: string, code: string): RootThunkAction {
     //async是基于Promise的，返回的数据依旧是Promise对象，属于微任务
