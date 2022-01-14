@@ -7,8 +7,9 @@ import React, {useEffect, useState} from "react"
 import style from "./index.module.scss"
 import img_src from "@/assets/logo.png"
 import {DiffOutlined, EditOutlined, HomeOutlined, LogoutOutlined} from '@ant-design/icons';
-import {GetUserInfo} from "@/api";
-import {Userinfo} from "@/store/actions"
+import {useDispatch, useSelector} from "react-redux";
+import {user} from "@/store/actions/user";
+import {RootState} from "@/store";
 
 const {SubMenu} = Menu;
 const {Header, Footer, Sider, Content} = Layout;
@@ -17,20 +18,12 @@ export default function Login() {
     const [state, setState] = useState({collapsed: false})
     //使用location，拿到路由
     const localtion = useLocation().pathname
-
+    const dispatch = useDispatch()//仓库函数调用
     //用户信息
-    const [info, setinfo] = useState<Userinfo>({} as Userinfo)
-
+    // const [info, setinfo] = useState<Userinfo>({} as Userinfo)
+    const info = useSelector((state: RootState) => state.user)
     useEffect(() => {
-        async function useinfo() {
-            const res = await GetUserInfo()
-            //将数据保存到redux
-            setinfo(res.data)
-        }
-
-        console.log(info)
-
-        useinfo()
+        dispatch(user())
     }, [])
 
 
@@ -66,6 +59,7 @@ export default function Login() {
 
                 <Header className="Top">
                     <div className="userinfo">
+
                         <span>
                             <img className="Imginfo" src={info.photo} alt="用户图片"></img>
                         </span>

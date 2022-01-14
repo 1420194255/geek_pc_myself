@@ -1,10 +1,11 @@
-import { combineReducers } from 'redux'
+import {combineReducers} from 'redux'
 
 import login from './login'
-
+import user from "./user"
 // 多个reducers合并
 const rootReducer = combineReducers({
-  login,
+    login,
+    user
 })
 
 // 暴露出去
