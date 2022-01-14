@@ -1,10 +1,11 @@
-import {useEffect} from "react";
-import {axios} from "@/utils/index"
+import style from "./index.module.scss"
 
 function Login() {
 
     return (
-        <div>layout</div>
+        <div className={style.index}>
+            <p className="header">hi</p>
+        </div>
     )
 }
 

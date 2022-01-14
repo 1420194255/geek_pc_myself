@@ -1,0 +1,9 @@
+.index {
+  //global将index作为父元素，限制了类型的使用范围
+  :global {
+    .header {
+      color: darkgray;
+      background: green;
+    }
+  }
+}
