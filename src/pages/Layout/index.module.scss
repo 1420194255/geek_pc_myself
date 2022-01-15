@@ -1,6 +1,7 @@
 
 .Layout {
   height: 100vh;
+  overflow: scroll;
   background: white;
   //global将index作为父元素，限制了类型的使用范围
   :global {
@@ -25,12 +26,11 @@
         color: white;
 
 
-
-          .Imginfo {
-            width: 37.2px !important;
-            height: 40px !important;
-            border-radius: 50%;
-          }
+        .Imginfo {
+          width: 37.2px !important;
+          height: 40px !important;
+          border-radius: 50%;
+        }
 
 
         .Text_content {

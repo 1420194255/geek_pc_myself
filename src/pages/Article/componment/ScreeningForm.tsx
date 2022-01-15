@@ -2,6 +2,7 @@ import {Button, Form, Radio} from "antd"
 import {ArticleStatus} from "@/api/constants"
 import SelectChannel from "@/pages/Article/componment/SelectChannel";
 import DateCheck from "@/pages/Article/componment/DateCheck";
+import ManagementTable from "@/pages/Article/componment/ManagementTable";
 
 function ScreeningForm() {
     const onFinish = (values: any) => {
@@ -19,8 +20,7 @@ function ScreeningForm() {
             initialValues={{remember: true}}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
-            autoComplete="off"
-        >
+            autoComplete="off">
             <Form.Item label="状态">
                 <Radio.Group>
                     {ArticleStatus.map((v, i) => {
@@ -43,6 +43,8 @@ function ScreeningForm() {
                 </Button>
             </Form.Item>
         </Form>
+        {/* 内容管理表格 */}
+        <ManagementTable></ManagementTable>
     </div>
 }
 
