@@ -1,0 +1,11 @@
+.Article {
+  :global {
+    .site-card-border-less-wrapper {
+      padding: 20px !important;
+    }
+
+    .ant-card {
+      width: 100% !important;
+    }
+  }
+}

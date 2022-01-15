@@ -44,22 +44,22 @@ export default function Login() {
                 <img src={img_src} alt="显示不全" className="imgInfo"/>
                 <div style={{width: 256}} className="Menu">
                     <Menu
-                        defaultSelectedKeys={[localtion]}
+                        selectedKeys={[localtion]}
                         mode="inline"
                         theme="dark"
                     >
-                        <Menu.Item key="/home" icon={<HomeOutlined/>}>首页
+                        <Menu.Item key="/home" icon={<HomeOutlined/>}>数据概述
                             <Link to="/home">
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="/home/publish" icon={<DiffOutlined/>}>
-                            <Link to="/home/publish">
-                                文章发布
+                        <Menu.Item key="/home/article" icon={<DiffOutlined/>}>
+                            <Link to="/home/article">
+                                内容管理
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="/home/article" icon={<EditOutlined/>}>
-                            <Link to="/home/article">
-                                编辑文章
+                        <Menu.Item key="/home/publish" icon={<EditOutlined/>}>
+                            <Link to="/home/publish">
+                                发布文章
                             </Link>
                         </Menu.Item>
 
