@@ -3,6 +3,8 @@ import {ArticleStatus} from "@/api/constants"
 import SelectChannel from "@/pages/Article/componment/SelectChannel";
 import DateCheck from "@/pages/Article/componment/DateCheck";
 import ManagementTable from "@/pages/Article/componment/ManagementTable";
+import {useEffect} from "react";
+import {channels} from "@/api";
 
 function ScreeningForm() {
     const onFinish = (values: any) => {
@@ -12,6 +14,7 @@ function ScreeningForm() {
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
+
 
     return <div>
         <Form
