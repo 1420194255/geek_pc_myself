@@ -1,4 +1,8 @@
 .Article {
+  height: 100%;
+  //内容超出自动产生滚动条
+  overflow-y: scroll;
+
   :global {
     .site-card-border-less-wrapper {
       padding: 20px !important;

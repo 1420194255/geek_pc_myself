@@ -18,6 +18,7 @@ instance.interceptors.request.use(function (res) {
 instance.interceptors.response.use(function (res) {
     return res.data
 }, function (err) {
+    //未完成响应失败--跳转login页面
     message.error(err.response.data.message)
     return Promise.reject(err)
 })

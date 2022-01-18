@@ -3,12 +3,14 @@ import {ArticleStatus} from "@/api/constants"
 import SelectChannel from "@/pages/Article/componment/SelectChannel";
 import DateCheck from "@/pages/Article/componment/DateCheck";
 import ManagementTable from "@/pages/Article/componment/ManagementTable";
-import {useEffect} from "react";
-import {channels} from "@/api";
+import {GetArticles} from "@/api";
 
 function ScreeningForm() {
-    const onFinish = (values: any) => {
+    const onFinish = async (values: any) => {
         console.log('Success:', values);
+        //获取文章列表数据
+        const res = await GetArticles({channel_id: 0, status: -1})
+        console.log("GetArticles", res)
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -20,23 +22,24 @@ function ScreeningForm() {
         <Form
             labelCol={{span: 1}}
             wrapperCol={{span: 16}}
-            initialValues={{remember: true}}
+            initialValues={{status: -1, channel_id: 0}}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off">
-            <Form.Item label="状态">
+
+            <Form.Item label="状态" name="status">
                 <Radio.Group>
                     {ArticleStatus.map((v, i) => {
-                        return (<Radio value={1} key={v.id}>{v.name}</Radio>)
+                        return (<Radio value={v.id} key={v.id}>{v.name}</Radio>)
                     })}
                 </Radio.Group>
             </Form.Item>
 
-            <Form.Item label="频道">
+            <Form.Item label="频道" name="channel_id">
                 <SelectChannel></SelectChannel>
             </Form.Item>
 
-            <Form.Item label="日期">
+            <Form.Item label="日期" name="date">
                 <DateCheck></DateCheck>
             </Form.Item>
 
